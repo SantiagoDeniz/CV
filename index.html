@@ -1,168 +1,520 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CV Santiago Deniz</title>
+  <meta name="description"
+    content="CV de Santiago Deniz - Docente de Computación, Testing de Software, Ingeniería de Datos y Ciencia de Datos" />
+  <title>Santiago Deniz | CV Profesional</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Outfit:wght@300;400;500;600&display=swap"
+    rel="stylesheet">
+
   <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --primary-gradient: linear-gradient(135deg, #1e293b 0%, #334155 50%, #475569 100%);
+      --accent-color: #14b8a6;
+      --accent-secondary: #06b6d4;
+      --text-primary: #f1f5f9;
+      --text-secondary: #cbd5e1;
+      --card-bg: rgba(255, 255, 255, 0.06);
+      --card-border: rgba(255, 255, 255, 0.12);
+      --shadow-color: rgba(0, 0, 0, 0.4);
+    }
+
     body {
-      font-family: 'Segoe UI', sans-serif;
-      background: #f4f4f4;
-      color: #333;
-      padding: 2rem;
-      max-width: 800px;
-      margin: auto;
+      font-family: 'Outfit', sans-serif;
+      background: var(--primary-gradient);
+      background-attachment: fixed;
+      color: var(--text-primary);
+      padding: 2rem 1rem;
+      min-height: 100vh;
+      line-height: 1.6;
+      animation: fadeIn 0.8s ease-out;
     }
-    h1 {
-      text-align: center;
-      margin-bottom: 2rem;
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
     }
-    details {
-      background: white;
-      margin-bottom: 1rem;
-      border-radius: 8px;
-      padding: 1rem;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
     }
-    summary {
-      font-weight: bold;
-      font-size: 1.2rem;
-      cursor: pointer;
-    }
-    .sub {
-      margin-top: 0.5rem;
-      font-weight: bold;
-    }
+
+    /* Header Styles */
     .header {
+      background: linear-gradient(135deg, rgba(20, 184, 166, 0.15) 0%, rgba(6, 182, 212, 0.15) 100%);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--card-border);
+      border-radius: 24px;
+      padding: 3rem 2rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 8px 32px var(--shadow-color);
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 1rem;
-      padding-left: 4rem;
-      padding-right: 4rem;
+      gap: 2rem;
+      animation: slideDown 0.8s ease-out;
+      position: relative;
+      overflow: hidden;
     }
+
+    .header::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.05), transparent);
+      animation: shimmer 3s infinite;
+    }
+
+    @keyframes shimmer {
+      0% {
+        transform: translateX(-100%) translateY(-100%) rotate(45deg);
+      }
+
+      100% {
+        transform: translateX(100%) translateY(100%) rotate(45deg);
+      }
+    }
+
+    @keyframes slideDown {
+      from {
+        opacity: 0;
+        transform: translateY(-30px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .header-content {
+      flex: 1;
+      z-index: 1;
+    }
+
+    h1 {
+      font-family: 'Inter', sans-serif;
+      font-size: 2.5rem;
+      font-weight: 800;
+      margin-bottom: 0.5rem;
+      background: linear-gradient(135deg, var(--accent-color), var(--accent-secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .subtitle {
+      font-size: 1.1rem;
+      color: var(--text-secondary);
+      font-weight: 300;
+    }
+
     .foto {
       width: 150px;
       height: 150px;
       border-radius: 50%;
       object-fit: cover;
-      margin-left: 1rem;
-      border: 2px solid #ccc;
+      border: 4px solid var(--accent-color);
+      box-shadow: 0 8px 24px rgba(20, 184, 166, 0.3);
+      animation: float 3s ease-in-out infinite;
+      z-index: 1;
+      transition: transform 0.3s ease;
     }
-    ul {
-      list-style-type: disc;
-      padding-left: 1.5rem;
+
+    .foto:hover {
+      transform: scale(1.05);
     }
-    li {
-      margin-bottom: 0.5rem;
-    }
-    a {
-      color: #007bff;
-      text-decoration: none;
-    }
-    a:hover {
-      text-decoration: underline;
-    }
-    @media screen and (max-width: 600px) {
-      max-width: 600px;
-      body {
-        padding: 1rem;
+
+    @keyframes float {
+
+      0%,
+      100% {
+        transform: translateY(0px);
       }
+
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+
+    /* Card Styles */
+    details {
+      background: var(--card-bg);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      margin-bottom: 1.5rem;
+      border-radius: 16px;
+      padding: 0;
+      border: 1px solid var(--card-border);
+      box-shadow: 0 4px 16px var(--shadow-color);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      overflow: hidden;
+      animation: slideUp 0.6s ease-out backwards;
+    }
+
+    details:nth-child(1) {
+      animation-delay: 0.1s;
+    }
+
+    details:nth-child(2) {
+      animation-delay: 0.2s;
+    }
+
+    details:nth-child(3) {
+      animation-delay: 0.3s;
+    }
+
+    details:nth-child(4) {
+      animation-delay: 0.4s;
+    }
+
+    details:nth-child(5) {
+      animation-delay: 0.5s;
+    }
+
+    details:nth-child(6) {
+      animation-delay: 0.6s;
+    }
+
+    details:nth-child(7) {
+      animation-delay: 0.7s;
+    }
+
+    details:nth-child(8) {
+      animation-delay: 0.8s;
+    }
+
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    details:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(20, 184, 166, 0.25);
+      border-color: var(--accent-color);
+    }
+
+    details[open] {
+      background: rgba(255, 255, 255, 0.12);
+    }
+
+    summary {
+      font-family: 'Inter', sans-serif;
+      font-weight: 700;
+      font-size: 1.3rem;
+      cursor: pointer;
+      padding: 1.5rem;
+      list-style: none;
+      user-select: none;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    summary::-webkit-details-marker {
+      display: none;
+    }
+
+    summary::after {
+      content: '▼';
+      position: absolute;
+      right: 1.5rem;
+      transition: transform 0.3s ease;
+      color: var(--accent-color);
+    }
+
+    details[open] summary::after {
+      transform: rotate(180deg);
+    }
+
+    summary:hover {
+      color: var(--accent-color);
+      padding-left: 2rem;
+    }
+
+    .content {
+      padding: 0 1.5rem 1.5rem 1.5rem;
+      animation: expandContent 0.4s ease-out;
+    }
+
+    @keyframes expandContent {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .sub {
+      margin-top: 1rem;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+      font-size: 1.1rem;
+      color: var(--accent-secondary);
+    }
+
+    p {
+      margin-bottom: 1rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+
+    strong {
+      color: var(--text-primary);
+      font-weight: 600;
+    }
+
+    ul {
+      list-style-type: none;
+      padding-left: 0;
+    }
+
+    li {
+      margin-bottom: 0.8rem;
+      padding-left: 1.5rem;
+      position: relative;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    li::before {
+      content: '▹';
+      position: absolute;
+      left: 0;
+      color: var(--accent-color);
+      font-weight: bold;
+    }
+
+    a {
+      color: var(--accent-secondary);
+      text-decoration: none;
+      position: relative;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -2px;
+      left: 0;
+      background: var(--accent-secondary);
+      transition: width 0.3s ease;
+    }
+
+    a:hover {
+      color: var(--accent-color);
+    }
+
+    a:hover::after {
+      width: 100%;
+      background: var(--accent-color);
+    }
+
+    /* Responsive Design */
+    @media screen and (max-width: 768px) {
+      body {
+        padding: 1rem 0.5rem;
+      }
+
       .header {
         flex-direction: column;
-        align-items: center;
-        padding: 1rem;
+        text-align: center;
+        padding: 2rem 1.5rem;
       }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .foto {
+        width: 120px;
+        height: 120px;
+      }
+
+      summary {
+        font-size: 1.1rem;
+        padding: 1.2rem;
+      }
+
+      summary::after {
+        right: 1.2rem;
+      }
+    }
+
+    @media screen and (max-width: 480px) {
+      h1 {
+        font-size: 1.7rem;
+      }
+
+      .subtitle {
+        font-size: 1rem;
+      }
+
       .foto {
         width: 100px;
         height: 100px;
       }
+
+      summary {
+        font-size: 1rem;
+      }
     }
   </style>
 </head>
+
 <body>
-  <div class="header">
-    <h1>📄 CV de Santiago Deniz</h1>
-    <img src="foto.jpg" alt="Foto de Santiago Deniz" class="foto" />
+  <div class="container">
+    <div class="header">
+      <div class="header-content">
+        <h1>📄 Santiago Deniz</h1>
+        <p class="subtitle">Docente de Computación | Testing & Data Engineering</p>
+      </div>
+      <img src="foto.jpg" alt="Foto de Santiago Deniz" class="foto" />
+    </div>
+
+    <details>
+      <summary>👤 Resumen Profesional</summary>
+      <div class="content">
+        <p>Soy un apasionado docente de computación con un gran interés en los desafíos, las nuevas tecnologías y en
+          aportar valor significativo a las personas. Mi formación incluye Ingeniería en Computación, Profesorado de
+          Informática y Matemática, Testing de Software, además de certificación en Ingeniería de Datos y Ciencia de
+          Datos.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>🛠️ Habilidades</summary>
+      <div class="content">
+        <p class="sub">Técnicas:</p>
+        <ul>
+          <li>Lenguajes de programación: Python, HTML, CSS, JavaScript (básico)</li>
+          <li>Testing de software: Diseño de casos de prueba, uso de herramientas como Jira y Postman, reporte de bugs,
+            análisis funcional.</li>
+          <li>Ciencia de datos: Análisis exploratorio con Python (pandas, matplotlib), modelado predictivo básico con
+            scikit-learn, y manejo general de bases de datos.</li>
+          <li>Ingeniería de datos: Procesamiento y análisis de datos con Python (pandas, NumPy), consultas avanzadas en
+            SQL, pipelines ETL y visualización con Matplotlib.</li>
+          <li>Herramientas tecnológicas: Git, GitHub, VSCode, Excel avanzado y Trello.</li>
+          <li>Educación y tecnología: planificación de clases, plataformas digitales (Kahoot!, presentaciones
+            interactivas, formularios), enseñanza activa, diseño de recursos interactivos (web HTML, ejercicios,
+            proyectos aplicados) y modelados de IA.</li>
+        </ul>
+        <p class="sub">Blandas:</p>
+        <ul>
+          <li>Comunicación clara y empática con estudiantes, colegas y equipos técnicos.</li>
+          <li>Liderazgo y trabajo en equipo, tanto en ambientes educativos como empresariales y ministeriales.</li>
+          <li>Autonomía y aprendizaje continuo, con experiencia en formación autodidacta y actualización constante.</li>
+          <li>Organización y planificación, tanto en el ámbito laboral como en proyectos personales.</li>
+          <li>Capacidad de adaptación en contextos diversos (educación pública, emprendimientos, colaboraciones
+            internacionales).</li>
+        </ul>
+      </div>
+    </details>
+
+    <details>
+      <summary>💼 Experiencia Laboral</summary>
+      <div class="content">
+        <p><strong>Secundaria (2016 - Presente)</strong><br />
+          Docente de Informática/Ciencias de la Computación. <br />
+          Profesor Orientador en Informática y Tecnología Educativa.</p>
+
+        <p><strong>Pizzería "Don Giuseppe" (2020 - 2022)</strong><br />
+          Socio Fundador. Gerente. Atención al Cliente.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>🚀 Proyectos Relevantes</summary>
+      <div class="content">
+        <ul>
+          <li>Desarrollo de una <a href="https://santiagodeniz.github.io/Programacion-en-Python/" target="_blank">página
+              web</a> educativa en HTML para enseñar Python a adolescentes de forma interactiva.</li>
+          <li>Creación de una <a href="https://github.com/SantiagoDeniz/CalcuCocina" target="_blank">app</a> en Python
+            con interfaz Tkinter que usa inteligencia artificial para calcular costos de recetas. Desarrollada para un
+            emprendimiento gastronómico.</li>
+          <li>Curso "Cultívate" – One Hope: Capacitación en liderazgo y servicio.</li>
+          <li>Proyecto "Cultívate" con One Hope, Perú: Herramientas de digitalización de información, gestión de
+            contactos y mensajerías.</li>
+        </ul>
+      </div>
+    </details>
+
+    <details>
+      <summary>🎓 Formación Académica</summary>
+      <div class="content">
+        <ul>
+          <li>2023 - 2024. Testing de Software, Ingeniería de Datos y Ciencia de Datos. Jóvenes a Programar (Ceibal).
+            Finalizado.</li>
+          <li>2018 - Profesorado de Matemática. IPA. 1º año aprobado.</li>
+          <li>2017 - Actualidad. Profesorado de Informática. INET. En curso.</li>
+          <li>2013. Ingeniería de Computación. Facultad de Ingeniería. 1º año aprobado.</li>
+        </ul>
+      </div>
+    </details>
+
+    <details>
+      <summary>🌐 Idiomas</summary>
+      <div class="content">
+        <ul>
+          <li>Inglés: Nivel intermedio</li>
+          <li>Portugués: Nivel intermedio</li>
+          <li>Italiano: Nivel básico</li>
+        </ul>
+      </div>
+    </details>
+
+    <details>
+      <summary>📞 Contacto</summary>
+      <div class="content">
+        <ul>
+          <li>📍 Montevideo, Uruguay</li>
+          <li>📧 santiago.deniz.ti@gmail.com</li>
+          <li>📱 +598 96 321 039</li>
+          <li>🔗 <a href="https://www.linkedin.com/in/santiago-deniz" target="_blank">linkedin.com/in/santiago-deniz</a>
+          </li>
+          <li>📇 Referencias disponibles a solicitud</li>
+        </ul>
+      </div>
+    </details>
   </div>
-
-  <details>
-    <summary>👤 Resumen Profesional</summary>
-    <p>Soy un apasionado docente de computación con un gran interés en los desafíos, las nuevas tecnologías y en aportar valor significativo a las personas. Mi formación incluye Ingeniería en Computación, Profesorado de Informática y Matemática, Testing de Software, además de certificación en Ingeniería de Datos y Ciencia de Datos.</p>
-  </details>
-
-  <details>
-    <summary>🛠️ Habilidades</summary>
-    <p class="sub">Técnicas:</p>
-    <ul>
-      <li>Lenguajes de programación: Python, HTML, CSS, JavaScript (básico)</li>
-      <li>Testing de software: Diseño de casos de prueba, uso de herramientas como Jira y Postman, reporte de bugs, análisis funcional.</li>
-      <li>Ciencia de datos: Análisis exploratorio con Python (pandas, matplotlib), modelado predictivo básico con scikit-learn, y manejo general de bases de datos.</li>
-      <li>Ingeniería de datos: Procesamiento y análisis de datos con Python (pandas, NumPy), consultas avanzadas en SQL, pipelines ETL y visualización con Matplotlib.</li>
-      <li>Herramientas tecnológicas: Git, GitHub, VSCode, Excel avanzado y Trello.</li>
-      <li>Educación y tecnología: planificación de clases, plataformas digitales (Kahoot!, presentaciones interactivas, formularios), enseñanza activa, diseño de recursos interactivos (web HTML, ejercicios, proyectos aplicados) y modelados de IA.</li>
-      <li>Voluntariado en One Hope: Seguimiento de contactos, diseño de presentaciones y librillos.</li>
-    </ul>
-    <p class="sub">Blandas:</p>
-    <ul>
-      <li>Comunicación clara y empática con estudiantes, colegas y equipos técnicos.</li>
-      <li>Liderazgo y trabajo en equipo, tanto en ambientes educativos como empresariales y ministeriales.</li>
-      <li>Autonomía y aprendizaje continuo, con experiencia en formación autodidacta y actualización constante.</li>
-      <li>Organización y planificación, tanto en el ámbito laboral como en proyectos personales.</li>
-      <li>Capacidad de adaptación en contextos diversos (educación pública, emprendimientos, colaboraciones internacionales).</li>
-    </ul>
-  </details>
-
-  <details>
-    <summary>💼 Experiencia Laboral</summary>
-    <p><strong>Secundaria (2016 - Presente)</strong><br />
-    Docente de Informática/Ciencias de la Computación. <br />
-    Profesor Orientador en Informática y Tecnología Educativa.</p>
-
-    <p><strong>Pizzería “Don Giuseppe” (2020 - 2022)</strong><br />
-    Socio Fundador. Gerente. Atención al Cliente.</p>
-  </details>
-
-  <details>
-    <summary>🚀 Proyectos Relevantes</summary>
-    <ul>
-      
-      <li>Desarrollo de una <a href="https://santiagodeniz.github.io/Programacion-en-Python/" >página web</a> educativa en HTML para enseñar Python a adolescentes de forma interactiva.</li>
-      <li>Creación de una <a href="https://github.com/SantiagoDeniz/CalcuCocina" >app</a> en Python con interfaz Tkinter que usa inteligencia artificial para calcular costos de recetas. Desarrollada para un emprendimiento gastronómico.</li>
-      <li>Curso “Cultívate” – One Hope: Capacitación en liderazgo y servicio.</li>
-      <li>Proyecto "Cultívate" con One Hope, Perú: Herramientas de digitalización de información, gestión de contactos y mensajerías.</li>
-    </ul>
-  </details>
-
-  <details>
-    <summary>🎓 Formación Académica</summary>
-    <ul>
-      <li>2023 - 2024. Testing de Software, Ingeniería de Datos y Ciencia de Datos. Jóvenes a Programar (Ceibal). Finalizado.</li>
-      <li>2018 - Profesorado de Matemática. IPA. 1º año aprobado.</li>
-      <li>2017 - Actualidad. Profesorado de Informática. INET. En curso.</li>
-      <li>2013. Ingeniería de Computación. Facultad de Ingeniería. 1º año aprobado.</li>
-    </ul>
-  </details>
-
-  <details>
-    <summary>🌐 Idiomas</summary>
-    <ul>
-      <li>Inglés: Nivel intermedio</li>
-      <li>Portugués: Nivel intermedio</li>
-      <li>Italiano: Nivel básico</li>
-    </ul>
-  </details>
-
-  <details>
-    <summary>📞 Contacto</summary>
-    <ul>
-      <li>📍 Montevideo, Uruguay</li>
-      <li>📧 santiago.deniz.ti@gmail.com</li>
-      <li>📱 +598 96 321 039</li>
-      <li>🔗 <a href="https://www.linkedin.com/in/santiago-deniz" target="_blank">linkedin.com/in/santiago-deniz</a></li>
-      <li>📇 Referencias disponibles a solicitud</li>
-    </ul>
-  </details>
-    
 </body>
+
 </html>
