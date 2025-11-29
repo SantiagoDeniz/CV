@@ -88,6 +88,84 @@
       overflow: hidden;
     }
 
+    /* Language Toggle Switch */
+    .language-toggle {
+      position: absolute;
+      top: 1.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10;
+    }
+
+    .toggle-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .toggle-label {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      transition: color 0.3s ease;
+    }
+
+    .toggle-label.active {
+      color: var(--accent-color);
+    }
+
+    .switch {
+      position: relative;
+      display: inline-block;
+      width: 60px;
+      height: 30px;
+    }
+
+    .switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(255, 255, 255, 0.2);
+      transition: 0.4s;
+      border-radius: 30px;
+      border: 2px solid var(--card-border);
+    }
+
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 22px;
+      width: 22px;
+      left: 2px;
+      bottom: 2px;
+      background: linear-gradient(135deg, var(--accent-color), var(--accent-secondary));
+      transition: 0.4s;
+      border-radius: 50%;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    }
+
+    input:checked+.slider {
+      background-color: rgba(20, 184, 166, 0.3);
+      border-color: var(--accent-color);
+    }
+
+    input:checked+.slider:before {
+      transform: translateX(30px);
+    }
+
+    .slider:hover {
+      background-color: rgba(255, 255, 255, 0.25);
+    }
+
     .header::before {
       content: '';
       position: absolute;
@@ -370,6 +448,34 @@
         padding: 2rem 1.5rem;
       }
 
+      .language-toggle {
+        top: 1rem;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      .toggle-wrapper {
+        gap: 0.3rem;
+      }
+
+      .toggle-label {
+        font-size: 0.8rem;
+      }
+
+      .switch {
+        width: 50px;
+        height: 26px;
+      }
+
+      .slider:before {
+        height: 18px;
+        width: 18px;
+      }
+
+      input:checked+.slider:before {
+        transform: translateX(24px);
+      }
+
       h1 {
         font-size: 2rem;
       }
@@ -413,17 +519,31 @@
 <body>
   <div class="container">
     <div class="header">
+      <div class="language-toggle">
+        <div class="toggle-wrapper">
+          <span class="toggle-label active" id="lang-es">ES</span>
+          <label class="switch">
+            <input type="checkbox" id="languageToggle">
+            <span class="slider"></span>
+          </label>
+          <span class="toggle-label" id="lang-en">EN</span>
+        </div>
+      </div>
       <div class="header-content">
         <h1>📄 Santiago Deniz</h1>
-        <p class="subtitle">Docente de Computación | Testing & Data Engineering</p>
+        <p class="subtitle" data-es="Docente de Computación | Testing & Data Engineering"
+          data-en="Computer Science Teacher | Testing & Data Engineering">Docente de Computación | Testing & Data
+          Engineering</p>
       </div>
       <img src="foto.jpg" alt="Foto de Santiago Deniz" class="foto" />
     </div>
 
     <details>
-      <summary>👤 Resumen Profesional</summary>
+      <summary data-es="👤 Resumen Profesional" data-en="👤 Professional Summary">👤 Resumen Profesional</summary>
       <div class="content">
-        <p>Soy un apasionado docente de computación con un gran interés en los desafíos, las nuevas tecnologías y en
+        <p data-es="Soy un apasionado docente de computación con un gran interés en los desafíos, las nuevas tecnologías y en aportar valor significativo a las personas. Mi formación incluye Ingeniería en Computación, Profesorado de Informática y Matemática, Testing de Software, además de certificación en Ingeniería de Datos y Ciencia de Datos."
+          data-en="I am a passionate computer science teacher with a great interest in challenges, new technologies, and providing significant value to people. My background includes Computer Engineering, Computer Science and Mathematics Teaching, Software Testing, as well as certifications in Data Engineering and Data Science.">
+          Soy un apasionado docente de computación con un gran interés en los desafíos, las nuevas tecnologías y en
           aportar valor significativo a las personas. Mi formación incluye Ingeniería en Computación, Profesorado de
           Informática y Matemática, Testing de Software, además de certificación en Ingeniería de Datos y Ciencia de
           Datos.</p>
@@ -431,100 +551,221 @@
     </details>
 
     <details>
-      <summary>🛠️ Habilidades</summary>
+      <summary data-es="🛠️ Habilidades" data-en="🛠️ Skills">🛠️ Habilidades</summary>
       <div class="content">
-        <p class="sub">Técnicas:</p>
+        <p class="sub" data-es="Técnicas:" data-en="Technical:">Técnicas:</p>
         <ul>
-          <li>Lenguajes de programación: Python, HTML, CSS, JavaScript (básico)</li>
-          <li>Testing de software: Diseño de casos de prueba, uso de herramientas como Jira y Postman, reporte de bugs,
+          <li data-es="Lenguajes de programación: Python, HTML, CSS, JavaScript (básico)"
+            data-en="Programming languages: Python, HTML, CSS, JavaScript (basic)">Lenguajes de programación: Python,
+            HTML, CSS, JavaScript (básico)</li>
+          <li
+            data-es="Testing de software: Diseño de casos de prueba, uso de herramientas como Jira y Postman, reporte de bugs, análisis funcional."
+            data-en="Software testing: Test case design, use of tools like Jira and Postman, bug reporting, functional analysis.">
+            Testing de software: Diseño de casos de prueba, uso de herramientas como Jira y Postman, reporte de bugs,
             análisis funcional.</li>
-          <li>Ciencia de datos: Análisis exploratorio con Python (pandas, matplotlib), modelado predictivo básico con
+          <li
+            data-es="Ciencia de datos: Análisis exploratorio con Python (pandas, matplotlib), modelado predictivo básico con scikit-learn, y manejo general de bases de datos."
+            data-en="Data science: Exploratory analysis with Python (pandas, matplotlib), basic predictive modeling with scikit-learn, and general database management.">
+            Ciencia de datos: Análisis exploratorio con Python (pandas, matplotlib), modelado predictivo básico con
             scikit-learn, y manejo general de bases de datos.</li>
-          <li>Ingeniería de datos: Procesamiento y análisis de datos con Python (pandas, NumPy), consultas avanzadas en
+          <li
+            data-es="Ingeniería de datos: Procesamiento y análisis de datos con Python (pandas, NumPy), consultas avanzadas en SQL, pipelines ETL y visualización con Matplotlib."
+            data-en="Data engineering: Data processing and analysis with Python (pandas, NumPy), advanced SQL queries, ETL pipelines, and visualization with Matplotlib.">
+            Ingeniería de datos: Procesamiento y análisis de datos con Python (pandas, NumPy), consultas avanzadas en
             SQL, pipelines ETL y visualización con Matplotlib.</li>
-          <li>Herramientas tecnológicas: Git, GitHub, VSCode, Excel avanzado y Trello.</li>
-          <li>Educación y tecnología: planificación de clases, plataformas digitales (Kahoot!, presentaciones
+          <li data-es="Herramientas tecnológicas: Git, GitHub, VSCode, Excel avanzado y Trello."
+            data-en="Tech tools: Git, GitHub, VSCode, advanced Excel, and Trello.">Herramientas tecnológicas: Git,
+            GitHub, VSCode, Excel avanzado y Trello.</li>
+          <li
+            data-es="Educación y tecnología: planificación de clases, plataformas digitales (Kahoot!, presentaciones interactivas, formularios), enseñanza activa, diseño de recursos interactivos (web HTML, ejercicios, proyectos aplicados) y modelados de IA."
+            data-en="Education and technology: lesson planning, digital platforms (Kahoot!, interactive presentations, forms), active teaching, design of interactive resources (HTML web, exercises, applied projects), and AI modeling.">
+            Educación y tecnología: planificación de clases, plataformas digitales (Kahoot!, presentaciones
             interactivas, formularios), enseñanza activa, diseño de recursos interactivos (web HTML, ejercicios,
             proyectos aplicados) y modelados de IA.</li>
         </ul>
-        <p class="sub">Blandas:</p>
+        <p class="sub" data-es="Blandas:" data-en="Soft Skills:">Blandas:</p>
         <ul>
-          <li>Comunicación clara y empática con estudiantes, colegas y equipos técnicos.</li>
-          <li>Liderazgo y trabajo en equipo, tanto en ambientes educativos como empresariales y ministeriales.</li>
-          <li>Autonomía y aprendizaje continuo, con experiencia en formación autodidacta y actualización constante.</li>
-          <li>Organización y planificación, tanto en el ámbito laboral como en proyectos personales.</li>
-          <li>Capacidad de adaptación en contextos diversos (educación pública, emprendimientos, colaboraciones
+          <li data-es="Comunicación clara y empática con estudiantes, colegas y equipos técnicos."
+            data-en="Clear and empathetic communication with students, colleagues, and technical teams.">Comunicación
+            clara y empática con estudiantes, colegas y equipos técnicos.</li>
+          <li
+            data-es="Liderazgo y trabajo en equipo, tanto en ambientes educativos como empresariales y ministeriales."
+            data-en="Leadership and teamwork, both in educational and business/governmental environments.">Liderazgo y
+            trabajo en equipo, tanto en ambientes educativos como empresariales y ministeriales.</li>
+          <li
+            data-es="Autonomía y aprendizaje continuo, con experiencia en formación autodidacta y actualización constante."
+            data-en="Autonomy and continuous learning, with experience in self-taught training and constant updating.">
+            Autonomía y aprendizaje continuo, con experiencia en formación autodidacta y actualización constante.</li>
+          <li data-es="Organización y planificación, tanto en el ámbito laboral como en proyectos personales."
+            data-en="Organization and planning, both in work settings and personal projects.">Organización y
+            planificación, tanto en el ámbito laboral como en proyectos personales.</li>
+          <li
+            data-es="Capacidad de adaptación en contextos diversos (educación pública, emprendimientos, colaboraciones internacionales)."
+            data-en="Adaptability in diverse contexts (public education, entrepreneurship, international collaborations).">
+            Capacidad de adaptación en contextos diversos (educación pública, emprendimientos, colaboraciones
             internacionales).</li>
         </ul>
       </div>
     </details>
 
     <details>
-      <summary>💼 Experiencia Laboral</summary>
+      <summary data-es="💼 Experiencia Laboral" data-en="💼 Work Experience">💼 Experiencia Laboral</summary>
       <div class="content">
-        <p><strong>Secundaria (2016 - Presente)</strong><br />
-          Docente de Informática/Ciencias de la Computación. <br />
-          Profesor Orientador en Informática y Tecnología Educativa.</p>
+        <p><strong data-es="Secundaria (2016 - Presente)" data-en="High School (2016 - Present)">Secundaria (2016 -
+            Presente)</strong><br />
+          <span data-es="Docente de Informática/Ciencias de la Computación."
+            data-en="Computer Science Teacher.">Docente de Informática/Ciencias de la Computación.</span> <br />
+          <span data-es="Profesor Orientador en Informática y Tecnología Educativa."
+            data-en="Mentor Teacher in Computer Science and Educational Technology.">Profesor Orientador en Informática
+            y Tecnología Educativa.</span>
+        </p>
 
-        <p><strong>Pizzería "Don Giuseppe" (2020 - 2022)</strong><br />
-          Socio Fundador. Gerente. Atención al Cliente.</p>
+        <p><strong data-es="Pizzería &quot;Don Giuseppe&quot; (2020 - 2022)"
+            data-en="Pizzeria &quot;Don Giuseppe&quot; (2020 - 2022)">Pizzería "Don Giuseppe" (2020 -
+            2022)</strong><br />
+          <span data-es="Socio Fundador. Gerente. Atención al Cliente."
+            data-en="Founding Partner. Manager. Customer Service.">Socio Fundador. Gerente. Atención al Cliente.</span>
+        </p>
       </div>
     </details>
 
     <details>
-      <summary>🚀 Proyectos Relevantes</summary>
+      <summary data-es="🚀 Proyectos Relevantes" data-en="🚀 Relevant Projects">🚀 Proyectos Relevantes</summary>
       <div class="content">
         <ul>
-          <li>Desarrollo de una <a href="https://santiagodeniz.github.io/Programacion-en-Python/" target="_blank">página
-              web</a> educativa en HTML para enseñar Python a adolescentes de forma interactiva.</li>
-          <li>Creación de una <a href="https://github.com/SantiagoDeniz/CalcuCocina" target="_blank">app</a> en Python
-            con interfaz Tkinter que usa inteligencia artificial para calcular costos de recetas. Desarrollada para un
-            emprendimiento gastronómico.</li>
-          <li>Curso "Cultívate" – One Hope: Capacitación en liderazgo y servicio.</li>
-          <li>Proyecto "Cultívate" con One Hope, Perú: Herramientas de digitalización de información, gestión de
-            contactos y mensajerías.</li>
+          <li><span data-es="Desarrollo de una" data-en="Development of an">Desarrollo de una</span> <a
+              href="https://santiagodeniz.github.io/Programacion-en-Python/" target="_blank" data-es="página web"
+              data-en="educational website">página web</a> <span
+              data-es="educativa en HTML para enseñar Python a adolescentes de forma interactiva."
+              data-en="in HTML to teach Python to teenagers in an interactive way.">educativa en HTML para enseñar
+              Python a adolescentes de forma interactiva.</span></li>
+          <li><span data-es="Creación de una" data-en="Creation of a">Creación de una</span> <a
+              href="https://github.com/SantiagoDeniz/CalcuCocina" target="_blank" data-es="app" data-en="app">app</a>
+            <span
+              data-es="en Python con interfaz Tkinter que usa inteligencia artificial para calcular costos de recetas. Desarrollada para un emprendimiento gastronómico."
+              data-en="in Python with Tkinter interface that uses artificial intelligence to calculate recipe costs. Developed for a gastronomic business.">en
+              Python con interfaz Tkinter que usa inteligencia artificial para calcular costos de recetas. Desarrollada
+              para un emprendimiento gastronómico.</span>
+          </li>
+          <li><span data-es="Curso &quot;Cultívate&quot; – One Hope: Capacitación en liderazgo y servicio."
+              data-en="&quot;Cultívate&quot; Course – One Hope: Leadership and service training.">Curso "Cultívate" –
+              One Hope: Capacitación en liderazgo y servicio.</span></li>
+          <li><span
+              data-es="Proyecto &quot;Cultívate&quot; con One Hope, Perú: Herramientas de digitalización de información, gestión de contactos y mensajerías."
+              data-en="&quot;Cultívate&quot; Project with One Hope, Peru: Information digitization tools, contact management, and messaging.">Proyecto
+              "Cultívate" con One Hope, Perú: Herramientas de digitalización de información, gestión de contactos y
+              mensajerías.</span></li>
         </ul>
       </div>
     </details>
 
     <details>
-      <summary>🎓 Formación Académica</summary>
+      <summary data-es="🎓 Formación Académica" data-en="🎓 Academic Background">🎓 Formación Académica</summary>
       <div class="content">
         <ul>
-          <li>2023 - 2024. Testing de Software, Ingeniería de Datos y Ciencia de Datos. Jóvenes a Programar (Ceibal).
-            Finalizado.</li>
-          <li>2018 - Profesorado de Matemática. IPA. 1º año aprobado.</li>
-          <li>2017 - Actualidad. Profesorado de Informática. INET. En curso.</li>
-          <li>2013. Ingeniería de Computación. Facultad de Ingeniería. 1º año aprobado.</li>
+          <li><span
+              data-es="2023 - 2024. Testing de Software, Ingeniería de Datos y Ciencia de Datos. Jóvenes a Programar (Ceibal). Finalizado."
+              data-en="2023 - 2024. Software Testing, Data Engineering, and Data Science. Jóvenes a Programar (Ceibal). Completed.">2023
+              - 2024. Testing de Software, Ingeniería de Datos y Ciencia de Datos. Jóvenes a Programar (Ceibal).
+              Finalizado.</span></li>
+          <li><span data-es="2018 - Profesorado de Matemática. IPA. 1º año aprobado."
+              data-en="2018 - Mathematics Teaching Degree. IPA. 1st year completed.">2018 - Profesorado de Matemática.
+              IPA. 1º año aprobado.</span></li>
+          <li><span data-es="2017 - Actualidad. Profesorado de Informática. INET. En curso."
+              data-en="2017 - Present. Computer Science Teaching Degree. INET. In progress.">2017 - Actualidad.
+              Profesorado de Informática. INET. En curso.</span></li>
+          <li><span data-es="2013. Ingeniería de Computación. Facultad de Ingeniería. 1º año aprobado."
+              data-en="2013. Computer Engineering. Faculty of Engineering. 1st year completed.">2013. Ingeniería de
+              Computación. Facultad de Ingeniería. 1º año aprobado.</span></li>
         </ul>
       </div>
     </details>
 
     <details>
-      <summary>🌐 Idiomas</summary>
+      <summary data-es="🌐 Idiomas" data-en="🌐 Languages">🌐 Idiomas</summary>
       <div class="content">
         <ul>
-          <li>Inglés: Nivel intermedio</li>
-          <li>Portugués: Nivel intermedio</li>
-          <li>Italiano: Nivel básico</li>
+          <li><span data-es="Inglés: Nivel intermedio" data-en="English: Intermediate level">Inglés: Nivel
+              intermedio</span></li>
+          <li><span data-es="Portugués: Nivel intermedio" data-en="Portuguese: Intermediate level">Portugués: Nivel
+              intermedio</span></li>
+          <li><span data-es="Italiano: Nivel básico" data-en="Italian: Basic level">Italiano: Nivel básico</span></li>
         </ul>
       </div>
     </details>
 
     <details>
-      <summary>📞 Contacto</summary>
+      <summary data-es="📞 Contacto" data-en="📞 Contact">📞 Contacto</summary>
       <div class="content">
         <ul>
-          <li>📍 Montevideo, Uruguay</li>
+          <li><span data-es="📍 Montevideo, Uruguay" data-en="📍 Montevideo, Uruguay">📍 Montevideo, Uruguay</span>
+          </li>
           <li>📧 santiago.deniz.ti@gmail.com</li>
           <li>📱 +598 96 321 039</li>
           <li>🔗 <a href="https://www.linkedin.com/in/santiago-deniz" target="_blank">linkedin.com/in/santiago-deniz</a>
           </li>
-          <li>📇 Referencias disponibles a solicitud</li>
+          <li><span data-es="📇 Referencias disponibles a solicitud" data-en="📇 References available upon request">📇
+              Referencias disponibles a solicitud</span></li>
         </ul>
       </div>
     </details>
   </div>
+
+  <script>
+    const translations = {
+      es: {},
+      en: {}
+    };
+
+    // Recopilar todas las traducciones
+    document.querySelectorAll('[data-es]').forEach(element => {
+      translations.es[element.dataset.es] = element.dataset.es;
+      translations.en[element.dataset.es] = element.dataset.en;
+    });
+
+    const languageToggle = document.getElementById('languageToggle');
+    const langEs = document.getElementById('lang-es');
+    const langEn = document.getElementById('lang-en');
+
+    // Función para cambiar el idioma
+    function changeLanguage(lang) {
+      document.querySelectorAll('[data-es]').forEach(element => {
+        if (lang === 'en') {
+          element.textContent = element.dataset.en;
+        } else {
+          element.textContent = element.dataset.es;
+        }
+      });
+
+      // Actualizar las etiquetas del toggle
+      if (lang === 'en') {
+        langEs.classList.remove('active');
+        langEn.classList.add('active');
+      } else {
+        langEs.classList.add('active');
+        langEn.classList.remove('active');
+      }
+
+      // Guardar preferencia
+      localStorage.setItem('language', lang);
+    }
+
+    // Event listener para el toggle
+    languageToggle.addEventListener('change', function () {
+      if (this.checked) {
+        changeLanguage('en');
+      } else {
+        changeLanguage('es');
+      }
+    });
+
+    // Cargar idioma guardado o usar español por defecto
+    const savedLang = localStorage.getItem('language') || 'es';
+    if (savedLang === 'en') {
+      languageToggle.checked = true;
+      changeLanguage('en');
+    }
+  </script>
 </body>
 
 </html>
